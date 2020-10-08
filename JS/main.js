@@ -22,22 +22,27 @@ var image; //Global Variable so upload() and makeGray() both can use it.
 
 //But Try to Minimize the use of Global Variables. Relying on too many can make it hard to understand the code you're developing and how the functions interact with each other.
 
+var image2;
+
 function upload() {
   var imgcanvas = document.getElementById("can");
+  // var imgcanvas2 = document.getElementById("can2");
   var fileinput = document.getElementById("finput");
   // var image = new SimpleImage(fileinput);
   image = new SimpleImage(fileinput);
+  image2 = new SimpleImage(fileinput);
+
   image.drawTo(imgcanvas); //Method inclusded in SimpleImage Libraray. We will call image.drawTo and use the canvas element as the parameter to indicate the SimpleImage should be drawn on a specific canvas of our choosing.
 }
 
 function makeGray() {
-  for (var pixel of image.values()) {
+  for (var pixel of image2.values()) {
     var avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3;
 
     pixel.setRed(avg);
     pixel.setGreen(avg);
     pixel.setBlue(avg);
   }
-  var imgcanvas = document.getElementById("can");
-  image.drawTo(imgcanvas);
+  var imgcanvas2 = document.getElementById("can2");
+  image2.drawTo(imgcanvas2);
 }
